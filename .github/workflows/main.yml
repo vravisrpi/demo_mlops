@@ -30,6 +30,10 @@ jobs:
            source activate demo-mlops-new1
            mlflow --version
            mlflow models build-docker -m ./demo_mlops/mlruns/4/316fe7ffd8dc428fbbad7aac1e98a4ba/artifacts/sklearn-model -n sklearn-model
+    - name: Deploy the model
+      run: |
+           docker rm -f demo_mlops
+           docker run -itd --name demo_mlops --restart=always -p 8002:8080 sklearn-model
  
  
    
