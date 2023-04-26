@@ -25,4 +25,10 @@ jobs:
         path: ./production.json
 
     - name: File contents
-      run: echo "${{ steps.read_file.outputs.content }}"
+      run: |
+           echo "${{ steps.read_file.outputs.content }}"
+           source activate demo-mlops-new1
+           mlflow --version
+ 
+        
+   
