@@ -31,8 +31,8 @@ jobs:
            mlflow --version
            mlflow models build-docker -m ${{ steps.read_file.outputs.content }} -n sklearn-model
  
-    - name: Deploy the model
-      run: |
-           docker rm -f demo_mlops
-           docker run -itd --name demo_mlops --restart=always -p 8002:8080 sklearn-model
+    #- name: Deploy the model
+    #  run: |
+    #       docker rm -f demo_mlops
+    #       docker run -itd --name demo_mlops --restart=always -p 8002:8080 sklearn-model
    
