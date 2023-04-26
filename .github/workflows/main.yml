@@ -16,6 +16,8 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hi Ravi shankar"
+    - name: Checkout code
+      uses: actions/checkout@v1
     - name: Read file contents
       id: read_file
       uses: andstor/file-reader-action@v1
