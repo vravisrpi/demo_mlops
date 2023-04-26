@@ -30,6 +30,7 @@ jobs:
            echo "${{ steps.read_file.outputs.content }}"
            $myVar="${{ steps.read_file.outputs.content }}"
            $myVar=`echo $myVar | sed 's/ *$//g'
+           echo "$myVar"
            source activate demo-mlops-new1
            mlflow --version
            mlflow models build-docker -m $myVar  -n sklearn-model
