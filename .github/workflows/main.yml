@@ -29,7 +29,7 @@ jobs:
            echo "${{ steps.read_file.outputs.content }}"
            source activate demo-mlops-new1
            mlflow --version
-           mlflow models build-docker -m ${{ steps.read_file.outputs.content }} -n sklearn-model
+           mlflow models build-docker -m ./demo_mlops/mlruns/4/316fe7ffd8dc428fbbad7aac1e98a4ba/artifacts/sklearn-model -n sklearn-model
  
  
    
