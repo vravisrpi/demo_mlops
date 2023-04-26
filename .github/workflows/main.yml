@@ -28,13 +28,11 @@ jobs:
  
       run: |
            echo "${{ steps.read_file.outputs.content }}"
-           trim:
-              description: 'Trims output'
-              required: true
-           echo "${{ steps.read_file.outputs.content }}"   
+           $myVar="${{ steps.read_file.outputs.content }}"
+           $myVar=`echo $myVar | sed 's/ *$//g'
            source activate demo-mlops-new1
            mlflow --version
-           mlflow models build-docker -m ${{ steps.read_file.outputs.content}} \ -n sklearn-model
+           mlflow models build-docker -m $myVar  -n sklearn-model
     - name: Deploy the model
       run: |
            docker rm -f demo_mlops
