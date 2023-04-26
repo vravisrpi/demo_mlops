@@ -16,3 +16,11 @@ jobs:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hi Ravi shankar"
+    - name: Read file contents
+      id: read_file
+      uses: andstor/file-reader-action@v1
+      with:
+        path: "production.json"
+
+    - name: File contents
+      run: echo "${ steps.read_file.outputs.contents }"
