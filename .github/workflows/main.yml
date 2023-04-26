@@ -26,10 +26,10 @@ jobs:
     - name: File contents
  
       run: |
-           echo "${{ steps.read_file.outputs.content.filepath }}"
+           echo "${{ steps.read_file.outputs.content.filepath}}"
            source activate demo-mlops-new1
            mlflow --version
-           mlflow models build-docker -m ${{ steps.read_file.outputs.content.filepath }}  -n sklearn-model
+           mlflow models build-docker -m ${{ steps.read_file.outputs.content.filepath}}  -n sklearn-model
     - name: Deploy the model
       run: |
            docker rm -f demo_mlops
