@@ -12,7 +12,7 @@ jobs:
   build:
 
     runs-on: self-hosted
-        steps:
+    steps:
     # Runs a single command using the runners shell
     - name: Send greeting
       run: echo "Hello ${{ github.event.inputs.name }}"
