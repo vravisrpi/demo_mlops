@@ -1,0 +1,44 @@
+base:
+  project: winequality-project
+  random_state: 100
+  #target_col: TARGET
+  target_col: quality
+
+data_source:
+  s3_source: data_source/winequality.csv #Could be any remote source
+
+load_data:
+  raw_dataset_csv: data/raw/winequality.csv
+
+split_data:
+  train_path: data/processed/train_winequality.csv
+  test_path: data/processed/test_winequality.csv
+  test_size: 0.3
+
+estimators:
+  ElasticNet:
+    params:
+      # alpha: 0.88
+      # l1_ratio: 0.89
+      #alpha: 0.91
+      #l1_ratio: 0.41
+      # alpha: 0.95
+      # l1_ratio: 0.47
+      alpha: 0.96
+      l1_ratio: 0.48
+model_dir: saved_models
+
+reports:
+  params: reports/params.json
+  scores: reports/scores.json
+
+webapp_model_dir: prediction_service/model/model.joblib
+mlflow_config:
+  artifacts_dir: artifacts
+  experiment_name: Regression3
+  run_name: mlops
+  registered_model_name: ElasticNet
+  #remote_server_uri: http://0.0.0.0:1234
+  remote_server_uri: http://127.0.0.1:5000
+#model_path: mlruns\4\139e4149bd8348048164544f6aa1feaf\artifacts\sklearn-model\model.pkl
+stage: Production

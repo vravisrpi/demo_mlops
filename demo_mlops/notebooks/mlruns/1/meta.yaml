@@ -1,0 +1,4 @@
+artifact_location: file:///C:/Users/A622783/OneDrive%20-%20Atos/Documents/AIAP/demo-mlops/demo_mlops/notebooks/mlruns/1
+experiment_id: '1'
+lifecycle_stage: active
+name: Regression1

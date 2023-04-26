@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_source/winequality.csv
+      md5: 5d6f24258e3c50bb01a61194b5401f5d
+      size: 264426
+    - path: src/get_data.py
+      md5: ea15e7b12351cf0ad4c4ef75777986c7
+      size: 735
+    - path: src/load_data.py
+      md5: dcf996a87a9a81aa36fd1354855199c3
+      size: 691
+    outs:
+    - path: data/raw/winequality.csv
+      md5: f8a17bfa190bdf3ce456d380d5bbf9dd
+      size: 292287
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/winequality.csv
+      md5: f8a17bfa190bdf3ce456d380d5bbf9dd
+      size: 292287
+    - path: src/split_data.py
+      md5: b86c3252dee440d0ea3af5dd81143d15
+      size: 1099
+    outs:
+    - path: data/processed/test_winequality.csv
+      md5: bf17443b72fc067c04896602388a2c2c
+      size: 58546
+    - path: data/processed/train_winequality.csv
+      md5: 8a05308fb5668c73e49f5732efebfeb6
+      size: 233888
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_winequality.csv
+      md5: bf17443b72fc067c04896602388a2c2c
+      size: 58546
+    - path: data/processed/train_winequality.csv
+      md5: 8a05308fb5668c73e49f5732efebfeb6
+      size: 233888
+    - path: src/train_and_evaluate.py
+      md5: 0e599d592c58cc5543dd7956a84f3a1c
+      size: 3788
+    params:
+      params.yaml:
+        estimators.ElasticNet.params.alpha: 0.9
+        estimators.ElasticNet.params.l1_ratio: 0.4
+    outs:
+    - path: reports/params.json
+      md5: a4aab0167612f21a6085dd05cfafdbf6
+      size: 44
+    - path: reports/scores.json
+      md5: 3a2d1b2f273b0549ac18c9b271deb3ee
+      size: 99
+    - path: saved_models/model.joblib
+      md5: 0327607693a785173b76160a9e9f5bdb
+      size: 879
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: 326155e9d79e10fd4cc5f43700e71a8e
+      size: 1922

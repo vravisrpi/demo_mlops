@@ -1,0 +1,66 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_source/winequality.csv
+      md5: 5d6f24258e3c50bb01a61194b5401f5d
+      size: 264426
+    - path: src/get_data.py
+      md5: ea15e7b12351cf0ad4c4ef75777986c7
+      size: 735
+    - path: src/load_data.py
+      md5: dcf996a87a9a81aa36fd1354855199c3
+      size: 691
+    outs:
+    - path: data/raw/winequality.csv
+      md5: f8a17bfa190bdf3ce456d380d5bbf9dd
+      size: 292287
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/raw/winequality.csv
+      md5: f8a17bfa190bdf3ce456d380d5bbf9dd
+      size: 292287
+    - path: src/split_data.py
+      md5: b86c3252dee440d0ea3af5dd81143d15
+      size: 1099
+    outs:
+    - path: data/processed/test_winequality.csv
+      md5: bf17443b72fc067c04896602388a2c2c
+      size: 58546
+    - path: data/processed/train_winequality.csv
+      md5: 8a05308fb5668c73e49f5732efebfeb6
+      size: 233888
+  log_production_model:
+    cmd: python src/log_production_model.py --config=params.yaml
+    deps:
+    - path: src/log_production_model.py
+      md5: ac6f5bbeae5af4aca9620bb578750bab
+      size: 2028
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_winequality.csv
+      md5: bf17443b72fc067c04896602388a2c2c
+      size: 58546
+    - path: data/processed/train_winequality.csv
+      md5: 8a05308fb5668c73e49f5732efebfeb6
+      size: 233888
+    - path: src/train_and_evaluate.py
+      md5: 1e1284b82fa64db216d63b837d48274e
+      size: 4169
+    params:
+      params.yaml:
+        estimators.ElasticNet.params.alpha: 0.96
+        estimators.ElasticNet.params.l1_ratio: 0.48
+    outs:
+    - path: reports/params.json
+      md5: 2468589c2cecbb3327b77c6948a3bdb5
+      size: 46
+    - path: reports/scores.json
+      md5: 577ee32bc77394c967df2ce5d78d3cc0
+      size: 100
+    - path: saved_models/model.joblib
+      md5: 9b58932b5810a5cb02599034c2158838
+      size: 1406

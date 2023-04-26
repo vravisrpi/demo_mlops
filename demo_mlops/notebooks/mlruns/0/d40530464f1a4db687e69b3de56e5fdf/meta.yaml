@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/A622783/OneDrive%20-%20Atos/Documents/AIAP/demo-mlops/demo_mlops/notebooks/mlruns/0/d40530464f1a4db687e69b3de56e5fdf/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: d40530464f1a4db687e69b3de56e5fdf
+run_uuid: d40530464f1a4db687e69b3de56e5fdf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1681792941644
+status: 1
+tags: []
+user_id: A622783
