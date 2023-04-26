@@ -25,8 +25,13 @@ jobs:
         path: ./production.json
 
     - name: File contents
+ 
       run: |
            echo "${{ steps.read_file.outputs.content }}"
+           trim:
+              description: 'Trims output'
+              required: true
+           echo "${{ steps.read_file.outputs.content }}"   
            source activate demo-mlops-new1
            mlflow --version
            mlflow models build-docker -m ${{ steps.read_file.outputs.content}} \ -n sklearn-model
