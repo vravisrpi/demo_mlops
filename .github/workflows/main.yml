@@ -23,13 +23,14 @@ jobs:
       uses: juliangruber/read-file-action@v1.1.6
       with:
         path: ./production.json
+        trim: true
     - name: File contents
  
       run: |
-           echo "${{ steps.read_file.outputs.content.filepath}}"
+           echo "${{ steps.read_file.outputs.content}}"
            source activate demo-mlops-new1
            mlflow --version
-           mlflow models build-docker -m ${{ steps.read_file.outputs.content.filepath}}  -n sklearn-model
+           mlflow models build-docker -m ${{ steps.read_file.outputs.content}}  -n sklearn-model
     - name: Deploy the model
       run: |
            docker rm -f demo_mlops
