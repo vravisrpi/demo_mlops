@@ -22,7 +22,7 @@ jobs:
       id: read_file
       uses: juliangruber/read-file-action@v1.1.6
       with:
-        path: ./package.json
+        path: ./production.json
 
     - name: File contents
       run: echo "${{ steps.package.outputs.content }}"
