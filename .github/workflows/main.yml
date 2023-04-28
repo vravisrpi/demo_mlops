@@ -24,7 +24,7 @@ jobs:
       with:
         path: ./production.json
         trim: true
-    - name: File contents
+    - name: Build the docker image.
  
       run: |
            echo "${{ steps.read_file.outputs.content}}"
