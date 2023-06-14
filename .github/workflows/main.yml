@@ -15,7 +15,7 @@ jobs:
     steps:
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: echo "Hi Ravi shankar"
+      run: echo "Hi Ravi shankar v"
     - name: Checkout code
       uses: actions/checkout@v1
     - name: Read file contents
