@@ -24,8 +24,8 @@ estimators:
       #l1_ratio: 0.41
       # alpha: 0.95
       # l1_ratio: 0.47
-      alpha: 0.963
-      l1_ratio: 0.483
+      alpha: 0.9631
+      l1_ratio: 0.4831
 model_dir: saved_models
 
 reports:
