@@ -27,6 +27,7 @@ jobs:
     - name: Build the docker image.
  
       run: |
+           pwd
            echo "${{ steps.read_file.outputs.content}}"
            source activate demo-mlops-new1
            mlflow --version
