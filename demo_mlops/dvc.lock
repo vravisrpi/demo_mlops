@@ -36,8 +36,8 @@ stages:
     cmd: python src/log_production_model.py --config=params.yaml
     deps:
     - path: src/log_production_model.py
-      md5: ac6f5bbeae5af4aca9620bb578750bab
-      size: 2028
+      md5: e0aaf946a76a3c93b355290045945744
+      size: 2027
   train_and_evaluate:
     cmd: python src/train_and_evaluate.py --config=params.yaml
     deps:
@@ -52,15 +52,15 @@ stages:
       size: 4169
     params:
       params.yaml:
-        estimators.ElasticNet.params.alpha: 0.9631
-        estimators.ElasticNet.params.l1_ratio: 0.4831
+        estimators.ElasticNet.params.alpha: 0.952
+        estimators.ElasticNet.params.l1_ratio: 0.472
     outs:
     - path: reports/params.json
-      md5: 3fc2a57eafeb5ad5d571e24f5cb008be
-      size: 50
+      md5: 21d0ae75e328cd78844744d56cbc24ed
+      size: 48
     - path: reports/scores.json
-      md5: 22f1343776a7b54b180b22e1b386be57
-      size: 100
+      md5: d6eb89b4f07a7cb074f9919d43a60551
+      size: 99
     - path: saved_models/model.joblib
-      md5: dc7ca8c51fb9f20d7b25c4c79823da26
+      md5: dcdbb79d4452307d1c1834f1001376b9
       size: 1406
