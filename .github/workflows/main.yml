@@ -3,10 +3,10 @@ name: build_image_deploy
 on:
   push:
     branches:
-    - main
+    - demo-branch
   pull_request:
     branches:
-    - main
+    - demo-branch
 
 jobs:
   build:
