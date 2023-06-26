@@ -1,0 +1,15 @@
+cmd: python src/split_data.py --config=params.yaml
+deps:
+- path: data/raw/winequality.csv
+  md5: f8a17bfa190bdf3ce456d380d5bbf9dd
+  size: 292287
+- path: src/split_data.py
+  md5: b86c3252dee440d0ea3af5dd81143d15
+  size: 1099
+outs:
+- path: data/processed/test_winequality.csv
+  md5: bf17443b72fc067c04896602388a2c2c
+  size: 58546
+- path: data/processed/train_winequality.csv
+  md5: 8a05308fb5668c73e49f5732efebfeb6
+  size: 233888

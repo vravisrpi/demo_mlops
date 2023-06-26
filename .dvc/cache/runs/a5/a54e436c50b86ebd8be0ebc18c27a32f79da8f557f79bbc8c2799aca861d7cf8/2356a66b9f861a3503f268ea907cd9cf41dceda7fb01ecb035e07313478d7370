@@ -1,0 +1,15 @@
+cmd: python src/load_data.py --config=params.yaml
+deps:
+- path: data_source/winequality.csv
+  md5: 5d6f24258e3c50bb01a61194b5401f5d
+  size: 264426
+- path: src/get_data.py
+  md5: ea15e7b12351cf0ad4c4ef75777986c7
+  size: 735
+- path: src/load_data.py
+  md5: dcf996a87a9a81aa36fd1354855199c3
+  size: 691
+outs:
+- path: data/raw/winequality.csv
+  md5: f8a17bfa190bdf3ce456d380d5bbf9dd
+  size: 292287

@@ -1,0 +1,25 @@
+cmd: python src/train_and_evaluate.py --config=params.yaml
+deps:
+- path: data/processed/test_winequality.csv
+  md5: bf17443b72fc067c04896602388a2c2c
+  size: 58546
+- path: data/processed/train_winequality.csv
+  md5: 8a05308fb5668c73e49f5732efebfeb6
+  size: 233888
+- path: src/train_and_evaluate.py
+  md5: 27e84103258d73941e7704ae2ff5fda1
+  size: 4141
+params:
+  params.yaml:
+    estimators.ElasticNet.params.alpha: 0.95
+    estimators.ElasticNet.params.l1_ratio: 0.47
+outs:
+- path: reports/params.json
+  md5: 060d0c6abaad69172cd59155dfbd2815
+  size: 46
+- path: reports/scores.json
+  md5: ea48119c18bbea7aad3bd4138bd53d42
+  size: 100
+- path: saved_models/model.joblib
+  md5: 93e37b90b8720904a42621747588383b
+  size: 879
